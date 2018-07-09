@@ -1,8 +1,8 @@
 class Controller {
-  Snake snake;
+  Snake snake; // the snake to control
   
   Controller(Snake s) {
-    snake = s;
+    snake = s; // reference snake to be controlled
   }
   
   boolean up() {
@@ -52,6 +52,9 @@ class Controller {
   boolean changeDirection() {
     boolean madeMove = false;
     
+    /* if one of the moves has been made true
+    is returned so no more moves can be
+    made during that interval */
     if (keyCode == UP) {
       madeMove = up();
     } else if (keyCode == DOWN) {
