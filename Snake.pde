@@ -1,5 +1,5 @@
 class Snake {
-  int[][] position = new int[50][2]; // positions of all blocks of the snake
+  int[][] snakeBlocks = new int[50][2]; // positions of all blocks of the snake
   int size = 20;                     // each block size of the snake
   int bodyLength = 3;                // current length of the snake
   
@@ -12,12 +12,12 @@ class Snake {
   int ySpeed = 0;                   // positive moves down, negative moves up
   
   Snake() {
-    position[0][0] = 40;
-    position[0][1] = 0;
-    position[1][0] = 20;
-    position[1][1] = 0;
-    position[2][0] = 0;
-    position[2][1] = 0;
+    snakeBlocks[0][0] = 40;
+    snakeBlocks[0][1] = 0;
+    snakeBlocks[1][0] = 20;
+    snakeBlocks[1][1] = 0;
+    snakeBlocks[2][0] = 0;
+    snakeBlocks[2][1] = 0;
   }
   
   /**
@@ -26,20 +26,20 @@ class Snake {
   void move() {
     /* work out the x and y position of the next position of the snake's 'head'
     before adding it to the array of snake parts */
-    int newX = position[0][0] + xSpeed;
-    int newY = position[0][1] + ySpeed;
+    int newX = snakeBlocks[0][0] + xSpeed;
+    int newY = snakeBlocks[0][1] + ySpeed;
     
     /* only if the snake is still within the boundaries of the play area should
     the snake be advanced forward in the chosen direction */
     if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
       for (int i = bodyLength - 1; i > 0; i--) {
-        position[i][0] = position[i-1][0];
-        position[i][1] = position[i-1][1];
+        snakeBlocks[i][0] = snakeBlocks[i-1][0];
+        snakeBlocks[i][1] = snakeBlocks[i-1][1];
       }
       
       // add the new block to the front of the snake
-      position[0][0] += xSpeed;
-      position[0][1] += ySpeed;
+      snakeBlocks[0][0] += xSpeed;
+      snakeBlocks[0][1] += ySpeed;
     } else {
       println("Game Over");
     }
@@ -53,7 +53,7 @@ class Snake {
     fill(0);
     
     for (int i = 0; i < bodyLength; i++) {
-      rect(position[i][0], position[i][1], size, size);
+      rect(snakeBlocks[i][0], snakeBlocks[i][1], size, size);
     }
   }
 }
