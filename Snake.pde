@@ -51,6 +51,7 @@ class Snake {
    * Displays the snake.
    */
   void display() {
+    rectMode(CORNER);
     noStroke();
     fill(0);
     
