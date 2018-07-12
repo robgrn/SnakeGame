@@ -5,12 +5,12 @@ int updateFrequency;
 boolean madeMove;
 
 void setup() {
-  size(200, 200);
+  size(300, 300);
   
   snake = new Snake();
   controller = new Controller(snake);
   deltaTime = millis();
-  updateFrequency = 500;
+  updateFrequency = 150;
   madeMove = false;
 }
 
