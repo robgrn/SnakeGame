@@ -15,7 +15,11 @@ void setup() {
   updateFrequency = 150;
   madeMove = false;
   gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
-  font = createFont("Helvetica", 36);
+  
+  /* loading font in a different thread to prevent delay when starting
+  the game; the font should hopefully be loaded by the time the player
+  gets game over */
+  thread("preloadFont");
 }
 
 void draw() {
@@ -64,4 +68,8 @@ void gameOver() {
   fill(0);
   textSize(18);
   text("Again?", (width/2), (height/2) + 30 + (18/3));
+}
+
+void preloadFont() {
+  font = createFont("Helvetica", 36);
 }
