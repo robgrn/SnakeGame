@@ -54,4 +54,14 @@ void gameOver() {
   textFont(font);
   textAlign(CENTER);
   text("GAME OVER", (width / 2), (height / 2));
+  
+  stroke(0);
+  fill(255);
+  rectMode(CENTER);
+  rect((width/2), (height/2)+30, 100, 30);
+  
+  noStroke();
+  fill(0);
+  textSize(18);
+  text("Again?", (width/2), (height/2) + 30 + (18/3));
 }
