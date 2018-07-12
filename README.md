@@ -12,3 +12,5 @@ Download (or clone) the files in this repo, open them inside Processing, click r
 - [ ] Start menu
 - [ ] Game over menu
 - [ ] Scores
+- [ ] Randomly placed food
+- [ ] Grow the snake and increase the score when some food is eaten
