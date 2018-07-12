@@ -3,6 +3,7 @@ Controller controller;
 int deltaTime;
 int updateFrequency;
 boolean madeMove;
+int gameState;
 
 void setup() {
   size(300, 300);
@@ -12,20 +13,26 @@ void setup() {
   deltaTime = millis();
   updateFrequency = 150;
   madeMove = false;
+  gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
 }
 
 void draw() {
   background(255);
   
-  // only move the snake once per interval
-  if (millis() >= (deltaTime + updateFrequency)) {
-    deltaTime = millis(); // reset delta time
-    snake.move(); // update the snake's position
-    madeMove = false; // allow another move to me made during the next interval
+  if (gameState == 1) {
+    // only move the snake once per interval
+    if (millis() >= (deltaTime + updateFrequency)) {
+      deltaTime = millis(); // reset delta time
+      gameState = snake.move(); // update the snake's position
+      madeMove = false; // allow another move to me made during the next interval
+    }
+    
+    // draw the snake
+    snake.display();
+  } else if (gameState == 2) {
+    snake.display();
+    text("GAME OVER", 20, 20);
   }
-  
-  // draw the snake
-  snake.display();
 }
 
 void keyPressed() {
