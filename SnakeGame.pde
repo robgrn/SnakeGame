@@ -20,18 +20,9 @@ void draw() {
   background(255);
   
   if (gameState == 1) {
-    // only move the snake once per interval
-    if (millis() >= (deltaTime + updateFrequency)) {
-      deltaTime = millis(); // reset delta time
-      gameState = snake.move(); // update the snake's position
-      madeMove = false; // allow another move to me made during the next interval
-    }
-    
-    // draw the snake
-    snake.display();
+    runGame();
   } else if (gameState == 2) {
-    snake.display();
-    text("GAME OVER", 20, 20);
+    gameOver();
   }
 }
 
@@ -41,4 +32,22 @@ void keyPressed() {
   if (!madeMove) {
     madeMove = controller.changeDirection();
   }
+}
+
+void runGame() {
+  // only move the snake once per interval
+  if (millis() >= (deltaTime + updateFrequency)) {
+    deltaTime = millis(); // reset delta time
+    gameState = snake.move(); // update the snake's position
+    madeMove = false; // allow another move to me made during the next interval
+  }
+  
+  // draw the snake
+  snake.display();
+}
+
+void gameOver() {
+  snake.display();
+  
+  text("GAME OVER", 20, 20);
 }
