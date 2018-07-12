@@ -24,13 +24,25 @@ class Snake {
    * Moves the snake based on the size of the snake.
    */
   void move() {
-    for (int i = bodyLength - 1; i > 0; i--) {
-      position[i][0] = position[i-1][0];
-      position[i][1] = position[i-1][1];
-    }
+    /* work out the x and y position of the next position of the snake's 'head'
+    before adding it to the array of snake parts */
+    int newX = position[0][0] + xSpeed;
+    int newY = position[0][1] + ySpeed;
     
-    position[0][0] += xSpeed;
-    position[0][1] += ySpeed;
+    /* only if the snake is still within the boundaries of the play area should
+    the snake be advanced forward in the chosen direction */
+    if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
+      for (int i = bodyLength - 1; i > 0; i--) {
+        position[i][0] = position[i-1][0];
+        position[i][1] = position[i-1][1];
+      }
+      
+      // add the new block to the front of the snake
+      position[0][0] += xSpeed;
+      position[0][1] += ySpeed;
+    } else {
+      println("Game Over");
+    }
   }
   
   /**
