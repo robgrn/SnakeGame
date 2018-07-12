@@ -23,7 +23,7 @@ class Snake {
   /**
    * Moves the snake based on the size of the snake.
    */
-  void move() {
+  int move() {
     /* work out the x and y position of the next position of the snake's 'head'
     before adding it to the array of snake parts */
     int newX = snakeBlocks[0][0] + xSpeed;
@@ -40,8 +40,10 @@ class Snake {
       // add the new block to the front of the snake
       snakeBlocks[0][0] += xSpeed;
       snakeBlocks[0][1] += ySpeed;
+      
+      return 1;
     } else {
-      println("Game Over");
+      return 2;
     }
   }
   
