@@ -48,6 +48,15 @@ class Snake {
   }
   
   /**
+   * Grow snake by 1 block.
+   */
+  void grow() {
+    snakeBlocks[bodyLength][0] = snakeBlocks[bodyLength-1][0];
+    snakeBlocks[bodyLength][1] = snakeBlocks[bodyLength-1][1];
+    bodyLength++;
+  }
+  
+  /**
    * Displays the snake.
    */
   void display() {
