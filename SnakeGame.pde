@@ -1,5 +1,7 @@
 Snake snake;
 Controller controller;
+Food food;
+
 int deltaTime;
 int updateFrequency;
 boolean madeMove;
@@ -15,6 +17,7 @@ void setup() {
   updateFrequency = 150;
   madeMove = false;
   gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
+  food = new Food();
   
   /* loading font in a different thread to prevent delay when starting
   the game; the font should hopefully be loaded by the time the player
@@ -46,8 +49,12 @@ void runGame() {
     deltaTime = millis(); // reset delta time
     gameState = snake.move(); // update the snake's position
     madeMove = false; // allow another move to me made during the next interval
+    if (food.collision()) {
+      food = new Food();
+    }
   }
   
+  food.display();
   // draw the snake
   snake.display();
 }
