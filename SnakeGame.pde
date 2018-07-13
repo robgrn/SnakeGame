@@ -51,6 +51,7 @@ void runGame() {
     madeMove = false; // allow another move to me made during the next interval
     if (food.collision()) {
       food = new Food();
+      snake.grow();
     }
   }
   
