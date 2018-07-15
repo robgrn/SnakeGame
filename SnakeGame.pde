@@ -6,7 +6,6 @@ int deltaTime;
 int updateFrequency;
 boolean madeMove;
 int gameState;
-PFont font;
 
 void setup() {
   size(300, 300);
@@ -18,7 +17,6 @@ void setup() {
   madeMove = false;
   gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
   food = new Food();
-  font = createFont("Helvetica", 36);
 }
 
 void draw() {
@@ -58,18 +56,4 @@ void runGame() {
 
 void gameOver() {
   snake.display();
-  
-  textFont(font);
-  textAlign(CENTER);
-  text("GAME OVER", (width / 2), (height / 2));
-  
-  stroke(0);
-  fill(255);
-  rectMode(CENTER);
-  rect((width/2), (height/2)+30, 100, 30);
-  
-  noStroke();
-  fill(0);
-  textSize(18);
-  text("Again?", (width/2), (height/2) + 30 + (18/3));
 }
