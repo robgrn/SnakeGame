@@ -3,8 +3,6 @@ Controller controller;
 Food food;
 Timer timer;
 
-int deltaTime;
-int updateFrequency;
 int gameState;
 
 void setup() {
