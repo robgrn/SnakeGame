@@ -1,70 +1,65 @@
 class Controller {
   Snake snake; // the snake to control
+  boolean canMove = true;
   
   Controller(Snake s) {
     snake = s; // reference snake to be controlled
   }
   
-  boolean up() {
+  void up() {
     if (snake.xSpeed != 0) {
       snake.xSpeed = 0;
       snake.ySpeed = -snake.size;
       
-      return true;
+      canMove = false;
     }
-    
-    return false;
   }
   
-  boolean down() {
+  void down() {
     if (snake.xSpeed != 0) {
       snake.xSpeed = 0;
       snake.ySpeed = snake.size;
       
-      return true;
+      canMove = false;
     }
-    
-    return false;
   }
   
-  boolean right() {
+  void right() {
     if (snake.ySpeed != 0) {
       snake.xSpeed = snake.size;
       snake.ySpeed = 0;
       
-      return true;
+      canMove = false;
     }
-    
-    return false;
   }
   
-  boolean left() {
+  void left() {
     if (snake.ySpeed != 0) {
       snake.xSpeed = -snake.size;
       snake.ySpeed = 0;
       
-      return true;
+      canMove = false;
     }
-    
-    return false;
   }
   
-  boolean changeDirection() {
-    boolean madeMove = false;
-    
+  void changeDirection() {
     /* if one of the moves has been made true
     is returned so no more moves can be
     made during that interval */
-    if (keyCode == UP) {
-      madeMove = up();
-    } else if (keyCode == DOWN) {
-      madeMove = down();
-    } else if (keyCode == RIGHT) {
-      madeMove = right();
-    } else if (keyCode == LEFT) {
-      madeMove = left();
+    if (canMove) {
+      if (keyCode == UP) {
+        up();
+      } else if (keyCode == DOWN) {
+        down();
+      } else if (keyCode == RIGHT) {
+        right();
+      } else if (keyCode == LEFT) {
+        left();
+      }
     }
-    
-    return madeMove;
+  }
+  
+  void moveMade() {
+    canMove = true;
   }
 }
