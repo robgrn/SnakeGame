@@ -1,19 +1,17 @@
-Snake snake;
-Controller controller;
-Food food;
-Timer timer;
-
-int gameState;
+Snake snake; // the snake controlled by the player
+Controller controller; // allows the snake to be controlled
+Food food; // random food blocks for the snake to eat
+Timer timer; // controls how fast the snake moves
+int gameState; // game status - 0: menu screen, 1: game in progress, 2: game over
 
 void setup() {
   size(300, 300);
   
   snake = new Snake();
   controller = new Controller(snake);
-  timer = new Timer(150);
-  
-  gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
   food = new Food();
+  timer = new Timer(150);
+  gameState = 1;
 }
 
 void draw() {
