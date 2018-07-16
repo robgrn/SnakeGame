@@ -1,6 +1,7 @@
 Snake snake;
 Controller controller;
 Food food;
+Timer timer;
 
 int deltaTime;
 int updateFrequency;
@@ -12,8 +13,8 @@ void setup() {
   
   snake = new Snake();
   controller = new Controller(snake);
-  deltaTime = millis();
-  updateFrequency = 150;
+  timer = new Timer(150);
+  
   madeMove = false;
   gameState = 1; // 0: menu screen, 1: game in progress, 2: game over
   food = new Food();
@@ -39,8 +40,7 @@ void keyPressed() {
 
 void runGame() {
   // only move the snake once per interval
-  if (millis() >= (deltaTime + updateFrequency)) {
-    deltaTime = millis(); // reset delta time
+  if (timer.canUpdate()) {
     gameState = snake.move(); // update the snake's position
     madeMove = false; // allow another move to me made during the next interval
     if (food.collision()) {
