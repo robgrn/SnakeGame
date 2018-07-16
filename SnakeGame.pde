@@ -39,7 +39,6 @@ void keyPressed() {
 }
 
 void runGame() {
-  // only move the snake once per interval
   if (timer.canUpdate()) {
     gameState = snake.move(); // update the snake's position
     madeMove = false; // allow another move to me made during the next interval
@@ -50,7 +49,6 @@ void runGame() {
   }
   
   food.display();
-  // draw the snake
   snake.display();
 }
 
