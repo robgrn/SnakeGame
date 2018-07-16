@@ -1,7 +1,7 @@
 class Snake {
   int[][] snakeBlocks = new int[50][2]; // positions of all blocks of the snake
   int size = 20;                     // each block size of the snake
-  int bodyLength = 3;                // current length of the snake
+  int bodyLength = 2;                // current length of the snake
   
   /*
    * xSpeed and ySpeed determine the direction of the snake.
@@ -12,12 +12,10 @@ class Snake {
   int ySpeed = 0;                   // positive moves down, negative moves up
   
   Snake() {
-    snakeBlocks[0][0] = 40;
+    snakeBlocks[0][0] = 20;
     snakeBlocks[0][1] = 0;
-    snakeBlocks[1][0] = 20;
+    snakeBlocks[1][0] = 0;
     snakeBlocks[1][1] = 0;
-    snakeBlocks[2][0] = 0;
-    snakeBlocks[2][1] = 0;
   }
   
   /**
