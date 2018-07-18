@@ -29,7 +29,7 @@ class Snake {
     
     /* only if the snake is still within the boundaries of the play area should
     the snake be advanced forward in the chosen direction */
-    if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
+    if (inBoundary(newX, newY)) {
       for (int i = bodyLength - 1; i > 0; i--) {
         snakeBlocks[i][0] = snakeBlocks[i-1][0];
         snakeBlocks[i][1] = snakeBlocks[i-1][1];
@@ -65,5 +65,13 @@ class Snake {
     for (int i = 0; i < bodyLength; i++) {
       rect(snakeBlocks[i][0], snakeBlocks[i][1], size, size);
     }
+  }
+  
+  boolean inBoundary(int newX, int newY) {
+    if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
+      return true;
+    }
+    
+    return false;
   }
 }
