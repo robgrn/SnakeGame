@@ -27,9 +27,11 @@ class Snake {
     int newX = snakeBlocks[0][0] + xSpeed;
     int newY = snakeBlocks[0][1] + ySpeed;
     
+    
+    
     /* only if the snake is still within the boundaries of the play area should
     the snake be advanced forward in the chosen direction */
-    if (inBoundary(newX, newY)) {
+    if (inBoundary(newX, newY) && !hasCollided(newX, newY)) {
       for (int i = bodyLength - 1; i > 0; i--) {
         snakeBlocks[i][0] = snakeBlocks[i-1][0];
         snakeBlocks[i][1] = snakeBlocks[i-1][1];
@@ -70,6 +72,16 @@ class Snake {
   boolean inBoundary(int newX, int newY) {
     if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
       return true;
+    }
+    
+    return false;
+  }
+  
+  boolean hasCollided(int newX, int newY) {
+    for (int i = 1; i < bodyLength; i++) {
+      if ((newX == snakeBlocks[i][0]) && (newY == snakeBlocks[i][1])) {
+        return true;
+      }
     }
     
     return false;
