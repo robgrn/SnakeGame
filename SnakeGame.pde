@@ -10,7 +10,7 @@ void setup() {
   snake = new Snake();
   controller = new Controller(snake);
   food = new Food();
-  timer = new Timer(150);
+  timer = new Timer(75);
   gameState = 1;
 }
 
