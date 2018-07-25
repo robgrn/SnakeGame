@@ -13,7 +13,9 @@ class Timer {
   
   boolean canUpdate() {
     if (getDelta() > interval) {
-      lastUpdate = millis();
+      // any remaining time at each interval is added to the next interval 
+      lastUpdate = millis() + (getDelta() - interval); 
+      
       return true;
     } else {
       return false;
