@@ -1,5 +1,5 @@
 class Snake {
-  int[][] snakeBlocks = new int[50][2]; // positions of all blocks of the snake
+  int[][] snakeBlocks = new int[225][2]; // positions of all blocks of the snake
   int size = 20;                     // each block size of the snake
   int bodyLength = 2;                // current length of the snake
   
