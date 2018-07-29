@@ -3,6 +3,7 @@ Controller controller; // allows the snake to be controlled
 Food food; // random food blocks for the snake to eat
 Timer timer; // controls how fast the snake moves
 int gameState; // game status - 0: menu screen, 1: game in progress, 2: game over
+int score;
 
 void setup() {
   size(300, 300);
@@ -12,6 +13,7 @@ void setup() {
   food = new Food();
   timer = new Timer(75);
   gameState = 1;
+  score = 0;
 }
 
 void draw() {
@@ -38,6 +40,7 @@ void runGame() {
     if (food.collision()) {
       food = new Food();
       snake.grow();
+      score++;
     }
   }
   
@@ -47,4 +50,5 @@ void runGame() {
 
 void gameOver() {
   snake.display();
+  println(score);
 }
