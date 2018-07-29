@@ -1,10 +1,28 @@
 class Food {
   int x;
   int y;
-  
+
+  /**
+   * Uses a quick and simple way to check if the food is generated
+   * on a grid space that is already taken by the snake. Keeps trying
+   * until an empty random grid space is found. 
+   */
   Food() {
-    x = (int) random(0, 15) * snake.size;
-    y = (int) random(0, 15) * snake.size;
+    boolean generateAgain = true;
+    
+    while (generateAgain) {
+      generateAgain = false;
+      x = (int) random(0, 15) * snake.size;
+      y = (int) random(0, 15) * snake.size;
+      
+      for (int i = 0; i < snake.bodyLength; i++) {
+        if ((x == snake.snakeBlocks[i][0]) && (y == snake.snakeBlocks[i][1])) {
+          println("Collision");
+          generateAgain = true;
+          break;
+        }
+      }
+    }
   }
   
   void display() {
