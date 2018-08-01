@@ -13,9 +13,9 @@ class Snake {
   
   Snake() {
     snakeBlocks[0][0] = 1;
-    snakeBlocks[0][1] = 0;
+    snakeBlocks[0][1] = 2;
     snakeBlocks[1][0] = 0;
-    snakeBlocks[1][1] = 0;
+    snakeBlocks[1][1] = 2;
   }
   
   /**
@@ -71,7 +71,7 @@ class Snake {
    * Checks if the snake will still be within the game boundaries.
    */
   boolean inBoundary(int newX, int newY) {
-    if ((newX >= 0) && (newX < (width/size)) && (newY >= 0) && (newY < (height/size))) {
+    if ((newX >= 0) && (newX < (width/size)) && (newY >= topBar.h) && (newY < (height/size))) {
       return true;
     }
     
