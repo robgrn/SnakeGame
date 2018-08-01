@@ -8,11 +8,11 @@ class Snake {
    * Snake can only move in one direction, so either xSpeed or ySpeed
    * will be 0.
    */
-  int xSpeed = size;                // positive moves right, negative moves left
-  int ySpeed = 0;                   // positive moves down, negative moves up
+  int xSpeed = 1; // positive moves right, negative moves left
+  int ySpeed = 0; // positive moves down, negative moves up
   
   Snake() {
-    snakeBlocks[0][0] = 20;
+    snakeBlocks[0][0] = 1;
     snakeBlocks[0][1] = 0;
     snakeBlocks[1][0] = 0;
     snakeBlocks[1][1] = 0;
@@ -26,8 +26,6 @@ class Snake {
     before adding it to the array of snake parts */
     int newX = snakeBlocks[0][0] + xSpeed;
     int newY = snakeBlocks[0][1] + ySpeed;
-    
-    
     
     /* only if the snake is still within the boundaries of the play area should
     the snake be advanced forward in the chosen direction */
@@ -65,18 +63,24 @@ class Snake {
     fill(0);
     
     for (int i = 0; i < bodyLength; i++) {
-      rect(snakeBlocks[i][0], snakeBlocks[i][1], size, size);
+      rect(getPosition(snakeBlocks[i][0]), getPosition(snakeBlocks[i][1]), size, size);
     }
   }
   
+  /**
+   * Checks if the snake will still be within the game boundaries.
+   */
   boolean inBoundary(int newX, int newY) {
-    if ((newX > 0 - size) && (newX < width) && (newY > 0 - size) && (newY < height)) {
+    if ((newX >= 0) && (newX < 15) && (newY >= 0) && (newY < 15)) {
       return true;
     }
     
     return false;
   }
   
+  /**
+   * Checks if the snake will collide with itself.
+   */
   boolean hasCollided(int newX, int newY) {
     for (int i = 1; i < bodyLength; i++) {
       if ((newX == snakeBlocks[i][0]) && (newY == snakeBlocks[i][1])) {
@@ -85,5 +89,13 @@ class Snake {
     }
     
     return false;
+  }
+  
+  /**
+   * Used to convert grid positions to the correct x and y coordinate
+   * to draw at.
+   */
+  int getPosition(int pos) {
+    return pos * size;
   }
 }

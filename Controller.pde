@@ -9,7 +9,7 @@ class Controller {
   void up() {
     if (snake.xSpeed != 0) {
       snake.xSpeed = 0;
-      snake.ySpeed = -snake.size;
+      snake.ySpeed = -1;
       
       canMove = false;
     }
@@ -18,7 +18,7 @@ class Controller {
   void down() {
     if (snake.xSpeed != 0) {
       snake.xSpeed = 0;
-      snake.ySpeed = snake.size;
+      snake.ySpeed = 1;
       
       canMove = false;
     }
@@ -26,7 +26,7 @@ class Controller {
   
   void right() {
     if (snake.ySpeed != 0) {
-      snake.xSpeed = snake.size;
+      snake.xSpeed = 1;
       snake.ySpeed = 0;
       
       canMove = false;
@@ -35,7 +35,7 @@ class Controller {
   
   void left() {
     if (snake.ySpeed != 0) {
-      snake.xSpeed = -snake.size;
+      snake.xSpeed = -1;
       snake.ySpeed = 0;
       
       canMove = false;

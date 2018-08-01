@@ -12,8 +12,8 @@ class Food {
     
     while (generateAgain) {
       generateAgain = false;
-      x = (int) random(0, 15) * snake.size;
-      y = (int) random(0, 15) * snake.size;
+      x = (int) random(0, 15);
+      y = (int) random(0, 15);
       
       for (int i = 0; i < snake.bodyLength; i++) {
         if ((x == snake.snakeBlocks[i][0]) && (y == snake.snakeBlocks[i][1])) {
@@ -29,7 +29,7 @@ class Food {
     noStroke();
     fill(255, 0, 255);
     rectMode(CORNER);
-    rect(x, y, snake.size, snake.size);
+    rect(getPosition(x), getPosition(y), snake.size, snake.size);
   }
   
   boolean collision() {
@@ -38,5 +38,9 @@ class Food {
     }
     
     return false;
+  }
+  
+  int getPosition(int pos) {
+    return pos * snake.size;
   }
 }
