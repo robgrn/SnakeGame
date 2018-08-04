@@ -4,7 +4,7 @@ Food food; // random food blocks for the snake to eat
 Timer timer; // controls how fast the snake moves
 ScoreBar scoreBar;
 int gameState; // game status - 0: menu screen, 1: game in progress, 2: game over
-int score;
+PFont font;
 
 void setup() {
   size(300, 300);
@@ -15,6 +15,8 @@ void setup() {
   food = new Food();
   timer = new Timer(75);
   gameState = 1;
+  font = loadFont("SquareFont-28.vlw");
+  textFont(font, 28);
 }
 
 void draw() {
