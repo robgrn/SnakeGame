@@ -52,5 +52,5 @@ void runGame() {
 
 void gameOver() {
   snake.display();
-  println(score);
+  scoreBar.display();
 }
