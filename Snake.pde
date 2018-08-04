@@ -71,7 +71,7 @@ class Snake {
    * Checks if the snake will still be within the game boundaries.
    */
   boolean inBoundary(int newX, int newY) {
-    if ((newX >= 0) && (newX < (width/size)) && (newY >= topBar.h) && (newY < (height/size))) {
+    if ((newX >= 0) && (newX < (width/size)) && (newY >= scoreBar.h) && (newY < (height/size))) {
       return true;
     }
     

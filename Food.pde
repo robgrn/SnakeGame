@@ -13,7 +13,7 @@ class Food {
     while (generateAgain) {
       generateAgain = false;
       x = (int) random(0, (width/snake.size));
-      y = (int) random(topBar.h, (height/snake.size));
+      y = (int) random(scoreBar.h, (height/snake.size));
       
       for (int i = 0; i < snake.bodyLength; i++) {
         if ((x == snake.snakeBlocks[i][0]) && (y == snake.snakeBlocks[i][1])) {
