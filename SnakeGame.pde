@@ -15,7 +15,6 @@ void setup() {
   food = new Food();
   timer = new Timer(75);
   gameState = 1;
-  score = 0;
 }
 
 void draw() {
@@ -42,7 +41,7 @@ void runGame() {
     if (food.collision()) {
       food = new Food();
       snake.grow();
-      score++;
+      scoreBar.score++;
     }
   }
   
