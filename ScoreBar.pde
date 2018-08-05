@@ -19,8 +19,8 @@ class ScoreBar {
     rect(x, y, getPosition(w), getPosition(h));
     
     fill(255);
-    textAlign(LEFT, TOP);
-    text(score, 10, 10);
+    textAlign(RIGHT, TOP);
+    text(score, width - 10, 10);
   }
   
   int getPosition(int pos) {
